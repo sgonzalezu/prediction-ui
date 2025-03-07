@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predicción con API</h1>
+    <form id="predictionForm">
+        <label for="input1">Valor 1:</label>
+        <input type="text" id="input1" required><br>
+        
+        <label for="input2">Valor 2:</label>
+        <input type="text" id="input2" required><br>
+        
+        <button type="submit">Obtener Predicción</button>
+    </form>
+    
+    <h2>Resultado:</h2>
+    <p id="result">Esperando datos...</p>
+
+    <script>
+        document.getElementById("predictionForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const input1 = document.getElementById("input1").value;
+            const input2 = document.getElementById("input2").value;
+            
+            const response = await fetch("https://prediction-f2cq.onrender.com/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ input1, input2 })
+            });
+            
+            const data = await response.json();
+            document.getElementById("result").textContent = `Predicción: ${data.prediction}`;
+        });
+    </script>
+</body>
+</html>
