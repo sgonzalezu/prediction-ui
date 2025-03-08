@@ -10,16 +10,26 @@
     <h1>Predicción de Transporte en Spaceship Titanic</h1>
     <form id="predictionForm">
         <label for="HomePlanet">Planeta de Origen:</label>
-        <input type="text" id="HomePlanet" required><br>
+        <select id="HomePlanet" required>
+            <option value="Europa">Europa</option>
+            <option value="Earth">Earth</option>
+            <option value="Mars">Mars</option>
+        </select><br>
 
-        <label for="CryoSleep">¿En Criogenia? (True/False):</label>
-        <input type="text" id="CryoSleep" required><br>
+        <label for="CryoSleep">¿En Criogenia?</label>
+        <select id="CryoSleep" required>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select><br>
 
         <label for="Age">Edad:</label>
         <input type="number" id="Age" required><br>
 
-        <label for="VIP">¿Es VIP? (True/False):</label>
-        <input type="text" id="VIP" required><br>
+        <label for="VIP">¿Es VIP?</label>
+        <select id="VIP" required>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select><br>
 
         <label for="RoomService">Gasto en RoomService:</label>
         <input type="number" id="RoomService" required><br>
