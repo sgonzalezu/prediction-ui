@@ -82,3 +82,14 @@ button:hover {
   font-size: 1.2em;
   text-align: center;
 }
+
+figure {
+  margin-bottom: 20px;
+}
+
+figcaption {
+  text-align: center;
+  font-weight: bold;
+  color: #58a6ff;
+  margin-top: 8px;
+}

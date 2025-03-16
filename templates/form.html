@@ -12,7 +12,7 @@
             
             <form id="prediction-form">
                 <div class="form-group">
-                    <label for="PassengerId">Passenger ID</label>
+                    <label for="PassengerId">Passenger ID / Name</label>
                     <input type="text" id="PassengerId" placeholder="Enter Passenger ID" required>
                 </div>
                 
@@ -79,6 +79,23 @@
             
             <div id="result">
                 {% if result %}
+                <h3>Before you know the outcome, see what has happened to other passengers</h3>
+                <figure>
+                    <figcaption>Numerical Variables Histograms</figcaption>
+                    <img src="/static/histogramas.png" alt="Gráfico 1" style="max-width: 100%; height: auto;">
+                </figure>
+                <figure>
+                    <figcaption>Correlation of numerical features</figcaption>
+                    <img src="/static/correlation.png" alt="Gráfico 2" style="max-width: 100%; height: auto;">
+                </figure>
+                <figure>
+                    <figcaption>Categorical variables analysis</figcaption>
+                    <img src="/static/categorical.png" alt="Gráfico 2" style="max-width: 100%; height: auto;">
+                </figure>
+                <figure>
+                    <figcaption>Machine Learning model Selection</figcaption>
+                    <img src="/static/models.png" alt="Gráfico 2" style="max-width: 100%; height: auto;">
+                </figure>
                 <h2>Prediction Result for Passenger {{ passenger_id }}: {{ result }}</h2>
                 {% endif %}
             </div>
