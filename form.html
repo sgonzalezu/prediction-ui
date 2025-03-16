@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spaceship Titanic Prediction Form</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Spaceship Titanic Prediction Form</h1>
+            <img src="/static/spaceship.jpg" alt="Spaceship" class="spaceship-img">
+            
+            <form id="prediction-form">
+                <div class="form-group">
+                    <label for="PassengerId">Passenger ID</label>
+                    <input type="text" id="PassengerId" placeholder="Enter Passenger ID" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="HomePlanet">Home Planet</label>
+                    <select id="HomePlanet" required>
+                        <option value="">Select Home Planet</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Europa">Europa</option>
+                        <option value="Mars">Mars</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="CryoSleep">CryoSleep?</label>
+                    <select id="CryoSleep" required>
+                        <option value="">Select Option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Age">Age</label>
+                    <input type="number" step="any" id="Age" placeholder="Enter Age" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="VIP">VIP?</label>
+                    <select id="VIP" required>
+                        <option value="">Select Option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="RoomService">Room Service</label>
+                    <input type="number" step="any" id="RoomService" placeholder="Enter Room Service value" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="FoodCourt">Food Court</label>
+                    <input type="number" step="any" id="FoodCourt" placeholder="Enter Food Court value" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ShoppingMall">Shopping Mall</label>
+                    <input type="number" step="any" id="ShoppingMall" placeholder="Enter Shopping Mall value" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Spa">Spa</label>
+                    <input type="number" step="any" id="Spa" placeholder="Enter Spa value" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="VRDeck">VR Deck</label>
+                    <input type="number" step="any" id="VRDeck" placeholder="Enter VR Deck value" required>
+                </div>
+                
+                <button type="submit">Predict</button>
+            </form>
+            
+            <div id="result">
+                {% if result %}
+                <h2>Prediction Result for Passenger {{ passenger_id }}: {{ result }}</h2>
+                {% endif %}
+            </div>
+        </div>
+        
+        <script>
+            document.getElementById('prediction-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                
+                const PassengerId = document.getElementById('PassengerId').value;
+                const HomePlanet = document.getElementById('HomePlanet').value;
+                const CryoSleep = document.getElementById('CryoSleep').value;
+                const Age = parseFloat(document.getElementById('Age').value);
+                const VIP = document.getElementById('VIP').value;
+                const RoomService = parseFloat(document.getElementById('RoomService').value);
+                const FoodCourt = parseFloat(document.getElementById('FoodCourt').value);
+                const ShoppingMall = parseFloat(document.getElementById('ShoppingMall').value);
+                const Spa = parseFloat(document.getElementById('Spa').value);
+                const VRDeck = parseFloat(document.getElementById('VRDeck').value);
+                
+                const formData = new URLSearchParams();
+                formData.append('PassengerId', PassengerId);
+                formData.append('HomePlanet', HomePlanet);
+                formData.append('CryoSleep', CryoSleep);
+                formData.append('Age', Age);
+                formData.append('VIP', VIP);
+                formData.append('RoomService', RoomService);
+                formData.append('FoodCourt', FoodCourt);
+                formData.append('ShoppingMall', ShoppingMall);
+                formData.append('Spa', Spa);
+                formData.append('VRDeck', VRDeck);
+                
+                const response = await fetch('/predict_form', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const result = doc.querySelector('#result').innerHTML;
+                document.getElementById('result').innerHTML = result;
+            });
+        </script>
+    </body>
+</html>
+        

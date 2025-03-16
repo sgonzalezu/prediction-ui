@@ -1,0 +1,84 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0d1117, #1e1e2f);
+  color: #c9d1d9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineación al inicio para ver el título */
+  min-height: 100vh; /* Permite que el contenido se expanda sin recortarse */
+  margin: 0;
+  padding-top: 20px; /* Espacio extra en la parte superior */
+}
+
+.container {
+  background-color: #161b22;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  width: 400px;
+  text-align: left;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 8px #58a6ff;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #238636;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #2ea043;
+}
+
+.spaceship-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+#result {
+  margin-top: 20px;
+  color: #58a6ff;
+  font-size: 1.2em;
+  text-align: center;
+}
